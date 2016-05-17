@@ -50,6 +50,7 @@ public class TCPServer implements Runnable{
                 while(!isDone && scanner.hasNextLine()){
 
                     String line = scanner.nextLine();
+                    System.out.println(line);
                     printWriter.println("From server: " + line);
                     printWriter.flush();
 

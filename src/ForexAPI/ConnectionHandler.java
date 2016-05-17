@@ -3,6 +3,8 @@ package ForexAPI;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import Server_TCP_Analysis.ServerRun;
 import org.json.*;
 import java.net.URL;
 import Database.DatabaseConnection;
@@ -20,6 +22,7 @@ public class ConnectionHandler implements Runnable {
     private String instrument = null;
     private JSONArray jsonArray = null;
     private DatabaseConnection databaseConnection = null;
+    private boolean let_me_forecast = false;
 
     public ConnectionHandler(String instrument, DatabaseConnection dbConnection){
 
@@ -27,6 +30,12 @@ public class ConnectionHandler implements Runnable {
         this.token = "68fce9a1b2cfc45b00b4b82906d5b926-8f670b9a2ef669ab44b4a129874cbcb4";
         this.isRun = true;
         this.databaseConnection = dbConnection;
+
+    }
+
+    public boolean Status_Forecast(){
+
+        return this.let_me_forecast;
 
     }
 
@@ -95,7 +104,7 @@ public class ConnectionHandler implements Runnable {
                     for(int i = 0; i < this.jsonArray.length(); i++){
 
                         String status = "";
-                        
+
 
                         if(jsonObject.has("status")){
 
@@ -109,7 +118,6 @@ public class ConnectionHandler implements Runnable {
                         String instr = this.jsonArray.getJSONObject(i).getString("instrument");
                         this.databaseConnection.insertToTable(bid, ask,
                                 status, instrument);
-
                     }
                     System.out.println(jsonObject.toString());
                     Thread.sleep(10000);

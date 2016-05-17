@@ -1,5 +1,6 @@
 package Server_TCP_Analysis;
 
+
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -37,7 +38,7 @@ public class ServerRun{
 
     public void isRunServer(boolean flag){
 
-        this.isRun = false;
+        this.isRun = flag;
 
     }
 
