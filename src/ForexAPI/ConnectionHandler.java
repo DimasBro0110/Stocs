@@ -27,7 +27,7 @@ public class ConnectionHandler implements Runnable {
     public ConnectionHandler(String instrument, DatabaseConnection dbConnection){
 
         this.instrument = instrument;
-        this.token = "68fce9a1b2cfc45b00b4b82906d5b926-8f670b9a2ef669ab44b4a129874cbcb4";
+        this.token = "${TOKEN}";
         this.isRun = true;
         this.databaseConnection = dbConnection;
 
